@@ -1,0 +1,2 @@
+class Additive < ApplicationRecord
+end
