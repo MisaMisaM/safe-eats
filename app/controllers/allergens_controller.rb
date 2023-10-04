@@ -1,0 +1,2 @@
+class AllergensController < ApplicationController
+end

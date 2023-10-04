@@ -1,0 +1,2 @@
+class AdditivesController < ApplicationController
+end
