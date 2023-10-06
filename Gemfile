@@ -27,8 +27,11 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem 'google-cloud-vision', '~> 1.3'
+gem "google-cloud-vision"
 
+gem "google-cloud-storage"
+
+gem "google-api-client"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
