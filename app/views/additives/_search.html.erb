@@ -1,0 +1,16 @@
+<div class="row justify-content-center">
+  <div class="my-3 ml-3">
+    <%= form_with url: additives_path, method: :get, class: "d-flex justify-content-center" do %>
+      <div class="row justify-content-around px-4">
+        <div class="col-10 ">
+          <%= text_field_tag :query,
+        params[:query],
+        class: "form-control searchbar",
+        placeholder: 'キーワードを入力'
+        %>
+          <%= submit_tag "検索", name: "", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
