@@ -111,6 +111,8 @@ GEM
       railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.9.1)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     faraday (2.7.11)
       base64
       faraday-net_http (>= 2.0, < 3.1)
@@ -251,6 +253,9 @@ GEM
       racc (~> 1.4)
     os (1.1.4)
     pg (1.5.4)
+    pg_search (2.3.6)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     popper_js (2.11.8)
     psych (5.1.0)
       stringio
@@ -367,6 +372,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails
+  faker
   font-awesome-sass (~> 6.1)
   google-api-client
   google-cloud-storage
@@ -374,6 +380,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   pg (~> 1.1)
+  pg_search
   puma (~> 5.0)
   rails (~> 7.0.8)
   sassc-rails
