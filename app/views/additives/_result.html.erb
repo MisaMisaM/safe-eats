@@ -1,0 +1,20 @@
+<% if @additives.present? %>
+  <% additives.each do |additive| %>
+    <div class="card card-trip mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown">
+      <div class="px-3 pt-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="pt-2 mb-0 fs-5"><%= additive.name.capitalize %></p>
+        </div>
+        <div class="overflow-container" data-enty-thinner-target="text">
+          <!-- Additional content for each additive -->
+        </div>
+      </div>
+      <div class="justify-content-center p-3 d-none" data-enty-thinner-target="details">
+        <p class="pt-2 mb-0 fs-5"><%= additive.information %></p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <!-- Handle the case when @additives is nil or empty -->
+  <p>No results found.</p>
+<% end %>
