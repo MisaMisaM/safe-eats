@@ -1,9 +1,8 @@
 class AdditivesController < ApplicationController
 
   def index
-
-    @additives = Additive.all
+    @additives = Additive.all.order(:name)
+    @allergens = Allergen.all.order(:name)
     @additives = @additives.search_by_aa(params[:query]) if params[:query].present?
-    @additive = Additive.new
   end
 end

@@ -10,7 +10,6 @@ class Additive < ApplicationRecord
   pg_search_scope :search_by_aa,
                   against: %i[name],
                   associated_against: { allergens: [:name] },
-                  # joins: { allergens: :additive },
                   using: { tsearch: { prefix: true } }
 
 end
