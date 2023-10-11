@@ -1,0 +1,14 @@
+<h1>List of Scans</h1>
+<ul>
+  <% @scans.each do |scan| %>
+    <li><%= scan.name %></li>
+    <!-- Add other attributes as needed -->
+  <% end %>
+</ul>
+<!-- Display the extracted text -->
+<h2>Extracted Text</h2>
+<% if @extracted_text.present? %>
+  <%= @extracted_text %>
+<% else %>
+  <p>No text found in the image.</p>
+<% end %>
