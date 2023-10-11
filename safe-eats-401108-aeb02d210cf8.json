@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "safe-eats-401108",
+  "private_key_id": "aeb02d210cf8c496c061cdf23cc0ef277513e13f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC4Gj+1HgjYZ4WE\nubuei9mHjDRm/pi+0gzUaGI2T+drtjqv0s/NWezm/eM9Bb8tmrhzyOI1zfLd9yiQ\nlAW3w/9lrWDJz6TEqa3V4CMvMecc6hwyIatR46qTzter2JCgx3LY9DlTUstn6E9c\nw6fJ30TKlkvI8VM47ISVUH58yLvxDUyJsc4evNtuAF5NOJpCqiwuhNFaGt72VY5O\ndPCkybmFji+M44RY/vqkJo+76+vF6GySlFUmDLQ4Yg950WZO/V4q/Dy9FyxAoLN2\nVvVBqtrF2MCUvUybdtl/Yv76/nQxBTji75Bt4o2EcLtVSA5GwJ1n82diekLore38\nZCIbnPtXAgMBAAECggEAD6i5PH2L1mRPw1n3mbpey/G3+f6zx/Sef2lK2UBzTa0X\n/CExPaU6ykGpag+qvYVIenNevPbXLoa5njqI602Hfq2AQF93WKbvZfQE6hxo165u\nAYbtnISB22/01jq7FSyBxJmupTtd7mj1vyKBNgwrPL616XyP+JUy3cRqoyXWc9/p\nuV8rLOPJNn6E9jTTGfDsK0hZfASbpm1UKCgdWIuzAGApho/5c5FWu1IahulX9JjZ\nOgljDliN2nYMV5pkvBOIyo9+0c5ij1whuSbwAKq6nM3716blc5PnrX/aBNK4Z95n\ncbe4Oqn16b0Eyw38UkDlz3lbY9fKtUujuspy+OPM8QKBgQDk528jn4xRO2xuJ5J4\nsxZ4SN4gAB7THtXpd7itvnp+1FvFqrkQJ2wRWTgDUkGSerX+D+CPeU1nITKt0/QQ\nsS5qhojAgO4jKG1oYhwAm4DqACDWpfxDMZcXAWBMUwN7a2UEvz2O6YVIhf+BHmCM\naAlA7iUCm0t8YxEBQa1Ak4LB3wKBgQDN5S2AC1qSVCVYeFqd2/6kIq05jCko3Vjq\n9X4WMyelyQooTNtTKgVvFlMtOa4TJ2473F15qo+PktmGxWlnoMQO7sJxcbL99jrt\no8LDb5Y/uR95ngus0qCd4w0lGa/QIdIj4GCdRrl9lkm9AT5lIBpjLdbGBbF7kZVY\nklKvGyIliQKBgE7dvlkTu5CxXKaHU9vqOC+xS3bTE8vBsAoEiciy/Bl+qS/tpl1+\nd6lyh+39BUKmrNWgOsq0DIsf0Qo7ILgvk8J4H93Tjjjm0OtKAkPjUANPkADkp4mv\nKFNw0fD6GRUI54E/MsJuitF1+ZZPFQzLO4T3iCDhyJxOtaktK7g4GrEZAoGAUygd\nkVqEkRcFIk8xohIpLVeICPcP5J5JfFP8QbEVcULaJF6uMk+FdFFa9KgYI0pInkqp\nQitd4gnYazMuGBl5NeK+i5z1QtcBA9uhHNfjogb9rFvlsT48eqgqNfLC7FfMjIrh\n2oOnBQ7+5yQqdCNcJPRtivrfrN2mqOgoFurphqkCgYA8ZGQO06BhSSYw1+4DStA9\nsqpE5I0FCVU4Kq5UtxTszBztdmDpcjiYuWYhnqkL25ZD9ZbTtFjupyExLaoHB/TW\nYaR4FrYtMkMzGnnJC+e5UXO9gsJprPk9V+K41sy+YeiD5L/vPUJbJyC0yyY1ZCXr\nbebaT940qJZPB4FcV6V9AA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "safe-eat@safe-eats-401108.iam.gserviceaccount.com",
+  "client_id": "102306832405071228869",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/safe-eat%40safe-eats-401108.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
