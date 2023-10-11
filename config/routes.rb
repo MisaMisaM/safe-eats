@@ -6,6 +6,4 @@ Rails.application.routes.draw do
   resources :scans, only: [:index, :new, :create, :show], defaults: { format: :json } do
     post :capture, on: :collection
   end
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
