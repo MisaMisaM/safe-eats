@@ -10,7 +10,9 @@
             <p class="pt-2 mb-0 fs-5">Information: <%= item.information %></p>
           </div>
           <div class="overflow-container" data-enty-thinner-target="text">
-            <%= image_tag item.icon %>
+            <% if @allergens.include?(item) && item.icon.present? %>
+              <%= image_tag item.icon %>
+            <% end %>
           </div>
         </div>
       </div>
