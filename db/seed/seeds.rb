@@ -29,16 +29,23 @@ time = Time.now
   additive.save
 end
 
-# Create new Allergen records
-10.times do
-  allergen = Allergen.new(
-    name: Faker::Name.name,
-    created_at: time,
-    updated_at: time,
-    information: Faker::Lorem.paragraph(sentence_count: rand(2..5))
-  )
-  allergen.save
+#allergens
+allergen_data = JSON.parse(File.read(Rails.root.join('db/seeds/allergens.json')))
+
+allergen_data.each do |data|
+  Allergen.create(data)
 end
+
+# Create new Allergen records
+# 10.times do
+#   allergen = Allergen.new(
+#     name: Faker::Name.name,
+#     created_at: time,
+#     updated_at: time,
+#     information: Faker::Lorem.paragraph(sentence_count: rand(2..5))
+#   )
+#   allergen.save
+# end
 
 puts "#{Additive.count} Additives created"
 puts "#{Allergen.count} Allergens created"
