@@ -30,10 +30,10 @@ time = Time.now
 end
 
 #allergens
-allergen_data = JSON.parse(File.read(Rails.root.join('db/seeds/allergens.json')))
+allergen_data = JSON.parse(File.read(Rails.root.join('db/seed/allergens.json')))
 
 allergen_data.each do |data|
-  Allergen.create(data)
+  Allergen.create!(data)
 end
 
 # Create new Allergen records
