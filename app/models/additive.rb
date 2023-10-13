@@ -3,7 +3,7 @@ class Additive < ApplicationRecord
   has_many :allergens
 
   validates :name, presence: true
-  validates :name, uniqueness: true
+  # validates :name, uniqueness: true
 
 
   include PgSearch::Model
