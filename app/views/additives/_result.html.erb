@@ -7,7 +7,7 @@
             <p class="pt-2 mb-0 fs-5">Name: <%= item.name.capitalize %></p>
           </div>
           <div class="overflow-container" data-enty-thinner-target="text">
-            <% if item.purpose.present? %>
+            <% if @additives.include?(item) && item.purpose.present? %>
               <p class="pt-2 mb-0 fs-5">Purpose: <%= item.purpose %></p>
             <% end %>
           </div>
@@ -15,7 +15,7 @@
             <p class="pt-2 mb-0 fs-5">Information: <%= item.information %></p>
           </div>
           <div class="overflow-container" data-enty-thinner-target="text">
-            <% if item.url.present? %>
+            <% if @additives.include?(item) && item.url.present? %>
               Reference URL: <a href="<%= item.url %>" target="_blank"><%= item.url %></a>
             <% end %>
           </div>
