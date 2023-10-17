@@ -5,8 +5,8 @@ class ScansController < ApplicationController
   def index
     @scans = Scan.all
 
-    image_path = "app/assets/images/product_label.jpeg"
-    vision_service = GoogleVisionService.new(image_path)
+    image_url = "https://jlgstg.blob.core.windows.net/cache/f/4/f/1/f/b/f4f1fb240f2cc39d9ce7a9b067f9fe3e9961fade.jpg"
+    vision_service = GoogleVisionService.new(image_url)
     @extracted_text = vision_service.extract_text
 
     if @extracted_text.nil?
@@ -36,4 +36,9 @@ class ScansController < ApplicationController
       render json: { text: "Error creating scan" }, status: :unprocessable_entity
     end
   end
+  # private
+
+  # def image_params
+  #   params.require(:image).permit(:image)
+  # end
 end

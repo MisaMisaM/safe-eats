@@ -1,6 +1,7 @@
-require "net/http"
+require "base64"
 require "json"
-require "open-uri"
+require "net/https"
+require "google/cloud/vision"
 
 class GoogleVisionService
   attr_reader :image_url
@@ -10,7 +11,6 @@ class GoogleVisionService
   end
 
   def extract_text
-    api_key = ENV['GOOGLE_API_KEY']
     json_request = {
       "requests": [
         {
@@ -28,7 +28,7 @@ class GoogleVisionService
       ]
     }
 
-    uri = URI.parse("https://vision.googleapis.com/v1/images:annotate?key=#{api_key}")
+    uri = URI.parse("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDJldBAoY9XqVcRrRbww0tHyX8LrBZ9AXg")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == "https"
     request = Net::HTTP::Post.new(uri.request_uri)
