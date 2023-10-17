@@ -17,28 +17,52 @@ puts "Creating new additives and allergens..."
 # Define a time variable
 time = Time.now
 
-# Create new Additive records
-10.times do
-  additive = Additive.new(
-    name: Faker::Name.name,
-    created_at: time,
-    updated_at: time,
-    information: Faker::Lorem.paragraph(sentence_count: rand(2..5)),
-    danger_level: Faker::Number.between(from: 0.0, to: 4.0)
+# additives - info
+require 'csv'
+
+# パスはCSVファイルの場所に合わせて修正してください
+csv_file = Rails.root.join('db', 'seed', 'additives.csv')
+
+CSV.foreach(csv_file, headers: true) do |row|
+  Additive.create!(
+    name: row['name'],
+    category: row['category'],
+    purpose: row['purpose'],
+    information: row['information'],
+    danger_level: row['danger_level'],
+    url: row['url']
   )
-  additive.save
+end
+
+# Create new Additive records
+# 10.times do
+#   additive = Additive.new(
+#     name: Faker::Name.name,
+#     created_at: time,
+#     updated_at: time,
+#     information: Faker::Lorem.paragraph(sentence_count: rand(2..5)),
+#     danger_level: Faker::Number.between(from: 0.0, to: 4.0)
+#   )
+#   additive.save
+# end
+
+# allergens - info
+allergen_data = JSON.parse(File.read(Rails.root.join('db/seed/allergens.json')))
+
+allergen_data.each do |data|
+  Allergen.create!(data)
 end
 
 # Create new Allergen records
-10.times do
-  allergen = Allergen.new(
-    name: Faker::Name.name,
-    created_at: time,
-    updated_at: time,
-    information: Faker::Lorem.paragraph(sentence_count: rand(2..5))
-  )
-  allergen.save
-end
+# 10.times do
+#   allergen = Allergen.new(
+#     name: Faker::Name.name,
+#     created_at: time,
+#     updated_at: time,
+#     information: Faker::Lorem.paragraph(sentence_count: rand(2..5))
+#   )
+#   allergen.save
+# end
 
 puts "#{Additive.count} Additives created"
 puts "#{Allergen.count} Allergens created"

@@ -2,8 +2,8 @@ class Additive < ApplicationRecord
   has_many :ingredients
   has_many :allergens
 
-  validates :name, :information, :danger_level, presence: true
-  validates :name, uniqueness: true
+  validates :name, presence: true
+  # validates :name, uniqueness: true
 
 
   include PgSearch::Model
