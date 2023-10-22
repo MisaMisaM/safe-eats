@@ -3,9 +3,31 @@ class ScansController < ApplicationController
   require_relative '../../services/google_vision'
 
   def index
-    @scans = Scan.all
+  end
 
-    image_url = "https://jlgstg.blob.core.windows.net/cache/f/4/f/1/f/b/f4f1fb240f2cc39d9ce7a9b067f9fe3e9961fade.jpg"
+  def new
+    render :new
+  end
+
+  def create
+    @scan = Scan.new(image_params)
+
+    if @scan.save
+      # Upload the image to Cloudinary
+      result = Cloudinary::Uploader.upload(@scan.image.url)
+      @scan.update(image_url: result['url'])
+
+      flash[:notice] = "Scan created successfully"
+      redirect_to scan_path(@scan) # Redirect to the show page for the newly created scan
+    else
+      render json: { text: "Error creating scan" }, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @scan = Scan.find(params[:id])
+
+    image_url = @scan.image_url
     vision_service = GoogleVisionService.new(image_url)
     @extracted_text = vision_service.extract_text
 
@@ -15,30 +37,14 @@ class ScansController < ApplicationController
 
     respond_to do |format|
       format.json { render json: { scans: @scans, extracted_text: @extracted_text } }
+      format.html # This line renders the HTML view for the show action
     end
   end
 
-  def new
+
+ private
+
+  def image_params
+    params.require(:scan).permit(:image)
   end
-
-  def create
-  end
-
-  def show
-  end
-
-  def capture
-    @scan = Scan.new(image_url: params[:image])
-
-    if @scan.save
-      render json: { text: "Scan created successfully" }
-    else
-      render json: { text: "Error creating scan" }, status: :unprocessable_entity
-    end
-  end
-  # private
-
-  # def image_params
-  #   params.require(:image).permit(:image)
-  # end
 end
