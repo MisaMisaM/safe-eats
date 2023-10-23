@@ -28,7 +28,7 @@ class GoogleVisionService
       ]
     }
 
-    uri = URI.parse("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDJldBAoY9XqVcRrRbww0tHyX8LrBZ9AXg")
+    uri = URI.parse("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDJldBAoY9XqVcRrRbww0tHyX8LrBZ9AXg")  # Replace with your actual API key
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == "https"
     request = Net::HTTP::Post.new(uri.request_uri)
@@ -37,20 +37,21 @@ class GoogleVisionService
     response = http.request(request)
 
     if response.code == "200"
-      response_data = JSON.parse(response.body)['responses'][0]
-      if response_data && response_data.key?('fullTextAnnotation')
-        text = response_data['fullTextAnnotation']['text']
+      response_data = JSON.parse(response.body)
+      # Debugging output
+      puts "Google Vision response:"
+      puts response_data.to_json
 
-        # Log the extracted text
+      if response_data.key?('responses') && response_data['responses'][0].key?('fullTextAnnotation')
+        text = response_data['responses'][0]['fullTextAnnotation']['text']
         puts "Extracted Text: #{text}"
-
         text
       else
         puts "No text found in the image."
         nil
       end
     else
-      puts "Error response from API: #{response.body}"
+      puts "Error response from Google Vision API: #{response.body}"
       nil
     end
   end

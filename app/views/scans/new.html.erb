@@ -7,11 +7,11 @@
     <h1>Take a Picture</h1>
     <!-- Video element for displaying the camera feed -->
     <video id="camera-feed" autoplay></video>
-    <form id="capture-form" action="/scans" method="post" enctype="multipart/form-data">
-      <!-- Input for capturing and uploading the image -->
-      <input type="file" name="scan[image_url]" accept="image/*" capture="environment">
-      <input type="submit" value="Capture and Upload">
-    </form>
+    <%= simple_form_for @scan, url: '/scans', html: { multipart: true, id: 'capture-form' } do |f| %>
+      <%= f.input :image_url, as: :file %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= f.submit 'Capture and Upload', class: 'btn btn-primary' %>
+    <% end %>
     <script>
       // Function to access the camera and display the video feed
       function setupCamera() {
@@ -52,14 +52,6 @@
           input.style.display = 'none';
           input.files = dt.files;
           document.getElementById('capture-form').appendChild(input);
-
-          // Include the authenticity token in the request headers
-          var csrfToken = document.getElementsByName('csrf-token')[0].content;
-          var csrfInput = document.createElement('input');
-          csrfInput.type = 'hidden';
-          csrfInput.name = 'authenticity_token';
-          csrfInput.value = csrfToken;
-          document.getElementById('capture-form').appendChild(csrfInput);
 
           // Submit the form
           document.getElementById('capture-form').submit();

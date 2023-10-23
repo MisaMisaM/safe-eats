@@ -35,6 +35,7 @@ gem "google-cloud-storage"
 gem "google-api-client"
 
 gem "cloudinary"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
