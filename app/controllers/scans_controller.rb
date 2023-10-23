@@ -13,16 +13,16 @@ class ScansController < ApplicationController
     @scan = Scan.new(image_params)
 
     if @scan.save
-      # Upload the image to Cloudinary
-      result = Cloudinary::Uploader.upload(@scan.image.url)
-      @scan.update(image_url: result['url'])
+      # Instead of using `@scan.image.url`, use the URL of the attached image
+      @scan.image_url = url_for(@scan.image_url) # This gets the URL of the attached image
 
       flash[:notice] = "Scan created successfully"
-      redirect_to scan_path(@scan) # Redirect to the show page for the newly created scan
+      redirect_to scan_path(@scan)
     else
       render json: { text: "Error creating scan" }, status: :unprocessable_entity
     end
   end
+
 
   def show
     @scan = Scan.find(params[:id])
@@ -44,7 +44,7 @@ class ScansController < ApplicationController
 
  private
 
-  def image_params
-    params.require(:scan).permit(:image)
+ def image_params
+  params.require(:scan).permit(:image_url)
   end
 end

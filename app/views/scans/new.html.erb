@@ -5,66 +5,66 @@
   </head>
   <body>
     <h1>Take a Picture</h1>
+    <!-- Video element for displaying the camera feed -->
+    <video id="camera-feed" autoplay></video>
     <form id="capture-form" action="/scans" method="post" enctype="multipart/form-data">
-      <video id="camera-feed" autoplay></video>
-      <input type="file" name="scan[image]" accept="image/*" capture="environment">
+      <!-- Input for capturing and uploading the image -->
+      <input type="file" name="scan[image_url]" accept="image/*" capture="environment">
       <input type="submit" value="Capture and Upload">
     </form>
     <script>
-      <script>
-        document.getElementById('capture-form').addEventListener('submit', function (e) {
-      e.preventDefault();
+      // Function to access the camera and display the video feed
+      function setupCamera() {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            var video = document.getElementById('camera-feed');
+            video.srcObject = stream;
+          })
+          .catch(function (error) {
+            console.error('Error accessing the camera:', error);
+          });
+      }
 
-      // Access the user's camera
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function (stream) {
-          // Display the camera stream in a video element
-          var video = document.getElementById('camera-feed');
-          video.srcObject = stream;
-          document.body.appendChild(video);
+      // Call the setupCamera function when the page loads
+      window.addEventListener('load', setupCamera);
 
-          // Capture a frame from the camera and save it as a Blob
-          var canvas = document.createElement('canvas');
-          var context = canvas.getContext('2d');
-          video.onloadedmetadata = function () {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(function (blob) {
-              var file = new File([blob], 'captured-image.jpg', { type: 'image/jpeg' });
-              var input = document.createElement('input');
-              input.type = 'file';
-              input.name = 'image';
-              // Create a new FileList and add the file to it
-              var files = new DataTransfer();
-              files.items.add(file);
-              input.files = [file]; // Wrap the File object in an array
+      // Button click event handler to capture and upload the image
+      document.getElementById('capture-form').addEventListener('submit', function (e) {
+        e.preventDefault();
 
-              // Include the authenticity token in the request headers
-              var formData = new FormData();
-              formData.append('scan[image]', file);
+        // Capture a frame from the camera and save it as a Blob
+        var video = document.getElementById('camera-feed');
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
 
-              formData.append('authenticity_token', document.getElementsByName('csrf-token')[0].content);
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(function (blob) {
+          var file = new File([blob], 'captured-image.jpg', { type: 'image/jpeg' });
+          var dt = new DataTransfer();
+          dt.items.add(file);
 
-              // Create an XMLHttpRequest to send the data
-              var xhr = new XMLHttpRequest();
-              xhr.open('POST', '/scans', true);
-              xhr.setRequestHeader('X-CSRF-Token', document.getElementsByName('csrf-token')[0].content);
-              xhr.send(formData);
+          // Create a hidden input field for the image file
+          var input = document.createElement('input');
+          input.type = 'file';
+          input.name = 'scan[image_url]';
+          input.style.display = 'none';
+          input.files = dt.files;
+          document.getElementById('capture-form').appendChild(input);
 
-              document.getElementById('capture-form').appendChild(input);
-              video.remove();
+          // Include the authenticity token in the request headers
+          var csrfToken = document.getElementsByName('csrf-token')[0].content;
+          var csrfInput = document.createElement('input');
+          csrfInput.type = 'hidden';
+          csrfInput.name = 'authenticity_token';
+          csrfInput.value = csrfToken;
+          document.getElementById('capture-form').appendChild(csrfInput);
 
-              // Submit the form
-              document.getElementById('capture-form').submit();
-            }, 'image/jpeg');
-          };
-        })
-        .catch(function (error) {
-          console.error('Error accessing the camera:', error);
-        });
-        });
+          // Submit the form
+          document.getElementById('capture-form').submit();
+        }, 'image/jpeg');
+      });
     </script>
-  </script>
-</body>
+  </body>
 </html>
