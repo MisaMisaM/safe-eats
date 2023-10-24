@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Take a Picture</title>
+  </head>
+  <body>
+    <h1>Take a Picture</h1>
+    <!-- Video element for displaying the camera feed -->
+    <video id="camera-feed" autoplay></video>
+    <%= simple_form_for @scan, url: '/scans', html: { multipart: true, id: 'capture-form' } do |f| %>
+      <%= f.input :image_url, as: :file %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= f.submit 'Capture and Upload', class: 'btn btn-primary' %>
+    <% end %>
+    <script>
+      // Function to access the camera and display the video feed
+      function setupCamera() {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            var video = document.getElementById('camera-feed');
+            video.srcObject = stream;
+          })
+          .catch(function (error) {
+            console.error('Error accessing the camera:', error);
+          });
+      }
+
+      // Call the setupCamera function when the page loads
+      window.addEventListener('load', setupCamera);
+
+      // Button click event handler to capture and upload the image
+      document.getElementById('capture-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Capture a frame from the camera and save it as a Blob
+        var video = document.getElementById('camera-feed');
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(function (blob) {
+          var file = new File([blob], 'captured-image.jpg', { type: 'image/jpeg' });
+          var dt = new DataTransfer();
+          dt.items.add(file);
+
+          // Create a hidden input field for the image file
+          var input = document.createElement('input');
+          input.type = 'file';
+          input.name = 'scan[image_url]';
+          input.style.display = 'none';
+          input.files = dt.files;
+          document.getElementById('capture-form').appendChild(input);
+
+          // Submit the form
+          document.getElementById('capture-form').submit();
+        }, 'image/jpeg');
+      });
+    </script>
+  </body>
+</html>

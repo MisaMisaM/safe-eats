@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Extracted Text</title>
+  </head>
+  <body>
+    <h2>Extracted Text</h2>
+    <div id="extracted-text-container">
+      <% if @extracted_text.present? %>
+        <%= @extracted_text %>
+      <% else %>
+        <p>No text found in the image.</p>
+      <% end %>
+    </div>
+    <a href="/scans/new">Take another picture</a>
+  </body>
+</html>

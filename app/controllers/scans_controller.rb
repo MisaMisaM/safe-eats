@@ -2,43 +2,56 @@ class ScansController < ApplicationController
   require 'google/cloud/vision'
   require_relative '../../services/google_vision'
 
+
   def index
-    @scans = Scan.all
-
-    image_url = "https://jlgstg.blob.core.windows.net/cache/f/4/f/1/f/b/f4f1fb240f2cc39d9ce7a9b067f9fe3e9961fade.jpg"
-    vision_service = GoogleVisionService.new(image_url)
-    @extracted_text = vision_service.extract_text
-
-    if @extracted_text.nil?
-      @error_message = "No text found in the image."
-    end
-
-    respond_to do |format|
-      format.json { render json: { scans: @scans, extracted_text: @extracted_text } }
-    end
   end
 
   def new
+    @scan = Scan.new
+    render :new
   end
 
   def create
-  end
-
-  def show
-  end
-
-  def capture
-    @scan = Scan.new(image_url: params[:image])
+    @scan = Scan.new(image_params)
 
     if @scan.save
-      render json: { text: "Scan created successfully" }
+      # Use the Cloudinary URL of the attached image
+      flash[:notice] = "Scan created successfully"
+      redirect_to scan_path(@scan)
     else
       render json: { text: "Error creating scan" }, status: :unprocessable_entity
     end
   end
-  # private
 
-  # def image_params
-  #   params.require(:image).permit(:image)
-  # end
+
+  def show
+    @scan = Scan.find(params[:id])
+    @image_url = "https://res.cloudinary.com/dvqsmda6p/image/upload/v1698067820/development/#{@scan.image_url.key}"
+
+    if @image_url.present?
+      google_vision_service = GoogleVisionService.new(@image_url)
+      @extracted_text = google_vision_service.extract_text
+
+      respond_to do |format|
+        format.json do
+          render json: { scan: @scan, extracted_text: @extracted_text }
+        end
+        format.html
+      end
+    else
+      @error_message = "Image URL is missing."
+      respond_to do |format|
+        format.json do
+          render json: { scan: @scan, error: @error_message }, status: :unprocessable_entity
+        end
+        format.html
+      end
+    end
+  end
+
+ private
+
+ def image_params
+  params.require(:scan).permit(:image_url)
+  end
 end
