@@ -5,8 +5,4 @@ Rails.application.routes.draw do
   resources :scans, only: [:new, :create, :show] do
     post :capture, on: :collection
   end
-
-  resources :scans do
-    resource :result, only: [:show]
-  end
 end
