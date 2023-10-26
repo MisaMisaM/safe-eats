@@ -2,7 +2,6 @@ class ScansController < ApplicationController
   require 'google/cloud/vision'
   require_relative '../../services/google_vision'
 
-
   def index
   end
 
@@ -15,7 +14,6 @@ class ScansController < ApplicationController
     @scan = Scan.new(image_params)
 
     if @scan.save
-      # Use the Cloudinary URL of the attached image
       flash[:notice] = "Scan created successfully"
       redirect_to scan_path(@scan)
     else

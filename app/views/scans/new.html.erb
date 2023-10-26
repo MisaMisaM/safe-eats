@@ -2,15 +2,20 @@
 <html>
   <head>
     <title>Take a Picture</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <h1>Take a Picture</h1>
-    <!-- Video element for displaying the camera feed -->
     <video id="camera-feed" autoplay></video>
+    <!-- Loading screen -->
+    <div class="loading-screen hidden" id="loadingScreen">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
     <%= simple_form_for @scan, url: '/scans', html: { multipart: true, id: 'capture-form' } do |f| %>
       <%= f.input :image_url, as: :file %>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <%= f.submit 'Capture and Upload', class: 'btn btn-primary' %>
+      <button id="capture-button" class="btn btn-primary">Capture and Upload</button>
     <% end %>
     <script>
       // Function to access the camera and display the video feed
@@ -27,6 +32,12 @@
 
       // Call the setupCamera function when the page loads
       window.addEventListener('load', setupCamera);
+
+      // Button click event handler to capture and upload the image
+      document.getElementById('capture-button').addEventListener('click', function () {
+        // Show the loading screen
+        document.getElementById('loadingScreen').classList.remove('hidden');
+      });
 
       // Button click event handler to capture and upload the image
       document.getElementById('capture-form').addEventListener('submit', function (e) {
