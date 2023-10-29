@@ -38,6 +38,14 @@ class ScansController < ApplicationController
         end
         format.html
       end
+
+      @additives = Additive.all
+      @words = @extracted_text.gsub("\n", "").split(/\s+|、/)
+      @matching_additives = []
+
+      @words.each do |word|
+        @matching_additives.concat(@additives.select { |additive| word.include?(additive.name) })
+      end
     else
       @error_message = "Image URL is missing."
       respond_to do |format|
