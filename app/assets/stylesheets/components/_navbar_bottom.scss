@@ -33,3 +33,30 @@ body {
 .content {
   flex: 1 0 auto;
 }
+
+
+// Custom CSS for the full circle tab
+.yellow-circular-tab {
+  background-color: rgb(239, 163, 14); // Set the background color to yellow
+  border-radius: 50%; // Make it a full circle by setting the border radius to 50%
+  width: 60px; // Adjust the width as needed for the desired size
+  height: 60px; // Set the height to control the position of the tab
+  position: relative; // Set the position to relative for positioning
+  z-index: 2; // Ensure it appears above the content
+}
+
+// Adjust the top and left properties to control the positioning of the tab
+.yellow-circular-tab.upper-half {
+  top: -40px; // Move the tab up to position the upper half above content
+  left: 5%; // Adjust left to center the tab
+  transform: translateX(-50%); // Center horizontally
+  border-radius: 50%;
+}
+
+// Style the text inside the tab
+.yellow-circular-tab span {
+  position: absolute;
+  top: 50%; // Center vertically
+  left: 50%; // Center horizontally
+  transform: translate(-50%, -50%); // Center text
+}
