@@ -8,11 +8,17 @@
     <div id="extracted-text-container">
       <% if @extracted_text.present? %>
         <%= @extracted_text %>
+        <p>--------------------------------------------</p>
         <p>含まれる添加物:
           <% @matching_additives.map { |additive| additive.name }.each do |name| %>
             <%= name %>
           <% end %>
         </p>
+        <p>アレルギー:
+          <% @matching_allergens.map { |allergen| allergen.icon }.uniq.each do |icon| %>
+            <%= image_tag icon, class: "icon-smaller" %>
+          </p>
+        <% end %>
       <% else %>
         <p>No text found in the image.</p>
       <% end %>
