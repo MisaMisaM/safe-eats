@@ -40,12 +40,21 @@ class ScansController < ApplicationController
       end
 
       @additives = Additive.all
-      @words = @extracted_text.gsub("\n", "").split(/\s+|、/)
+      @additive_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
       @matching_additives = []
 
-      @words.each do |word|
+      @additive_words.each do |word|
         @matching_additives.concat(@additives.select { |additive| word.include?(additive.name) })
       end
+
+      @allergens = Allergen.all
+      @allergen_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
+      @matching_allergens = []
+
+      @allergen_words.each do |word|
+        @matching_allergens.concat(@allergens.select { |allergen| word.include?(allergen.name) })
+      end
+
     else
       @error_message = "Image URL is missing."
       respond_to do |format|
