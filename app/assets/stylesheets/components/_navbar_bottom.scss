@@ -8,7 +8,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
-  border: 0.5px solid white;
+  border-top: 1px solid rgb(39, 31, 31);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: 65px;
@@ -32,7 +32,29 @@ body {
 
 .content {
   flex: 1 0 auto;
+  z-index: 200;
 }
+
+
+
+#nav-tab .nav-link.active {
+  // Settings to overide Bootstrap, when tab *is* active
+  background-color: #ece4e4;
+}
+
+#nav-tab .nav-link {
+  // Settings to overide Bootstrap, when tab is *not* active
+  color: black;
+}
+
+.tab-content>.tab-pane {
+  // To fix bottom of content from being covered by navbar
+  padding-bottom: 80px;
+}
+
+
+
+
 
 
 // Custom CSS for the full circle tab
@@ -49,6 +71,7 @@ body {
 .yellow-circular-tab.upper-half {
   top: -40px; // Move the tab up to position the upper half above content
   left: 5%; // Adjust left to center the tab
+  border: 1px solid rgb(39, 31, 31);
   transform: translateX(-50%); // Center horizontally
   border-radius: 50%;
 }
@@ -59,4 +82,5 @@ body {
   top: 50%; // Center vertically
   left: 50%; // Center horizontally
   transform: translate(-50%, -50%); // Center text
+
 }
