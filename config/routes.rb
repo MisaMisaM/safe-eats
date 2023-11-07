@@ -7,8 +7,4 @@ Rails.application.routes.draw do
     post :capture, on: :collection
     delete :delete, on: :member # Add a custom route for deleting images
   end
-
-  resources :scans do
-    resource :result, only: [:show]
-  end
 end

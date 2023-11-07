@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_23_085736) do
+
+ActiveRecord::Schema[7.0].define(version: 2023_11_05_025330) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_085736) do
     t.string "category"
     t.string "purpose"
     t.string "url"
+    t.string "display_name"
   end
 
   create_table "allergens", force: :cascade do |t|
