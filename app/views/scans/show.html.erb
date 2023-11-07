@@ -10,8 +10,8 @@
         <%= @extracted_text %>
         <p>--------------------------------------------</p>
         <p>含まれる添加物:
-          <% @matching_additives.map { |additive| additive.name }.each do |name| %>
-            <%= name %>
+          <% @matching_additives.each do |additive| %>
+            <%= additive.name || additive.display_name %>
           <% end %>
         </p>
         <p>アレルギー:
