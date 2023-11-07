@@ -44,7 +44,7 @@ class ScansController < ApplicationController
       @matching_additives = []
 
       @additive_words.each do |word|
-        @matching_additives.concat(@additives.select { |additive| word.include?(additive.name) })
+        @matching_additives.concat(@additives.select { |additive| word.include?(additive.name || additive.display_name) })
       end
 
       @allergens = Allergen.all
