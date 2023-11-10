@@ -1,8 +1,10 @@
 <div class="row justify-content-center">
   <div class="my-3 ml-3">
     <div data-controller="refresh-list">
-      <%= form_with url: additives_path, method: :get, html: { class: 'mb-5', data: { refresh_list_target: 'form' } } do |f| %>
-        <%= f.text_field :query,
+      <%= form_with url: additives_path, method: :get, html: { class: "d-flex justify-content-center", data: { refresh_list_target: 'form' } } do |f| %>
+        <div class="d-flex align-items-center">
+          <div class="col-16">
+            <%= f.text_field :query,
                      class: "form-control",
                      placeholder: 'キーワードを入力' ,
                      value: params[:query],
@@ -10,6 +12,8 @@
                       refresh_list_target: 'searchInput',
                       action: "keyup->refresh-list#update"
                     } %>
+          </div>
+        </div>
       <% end %>
       <%= render 'result', additives: @additives %>
     </div>
