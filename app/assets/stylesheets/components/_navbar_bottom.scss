@@ -1,8 +1,8 @@
 .nav-tabs {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0px 80px;
+  justify-content: space-around;
+  padding: 0px 32px;
   padding-bottom: 0.8em;
   padding-top: 0.8em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -20,6 +20,7 @@
   border-bottom: 1.3em solid transparent;
 }
 
+
 html,
 body {
   height: 100%;
@@ -32,7 +33,6 @@ body {
 
 .content {
   flex: 1 0 auto;
-  z-index: 200;
 }
 
 
@@ -70,8 +70,8 @@ body {
 // Adjust the top and left properties to control the positioning of the tab
 .yellow-circular-tab.upper-half {
   top: -40px; // Move the tab up to position the upper half above content
-  left: 5%; // Adjust left to center the tab
-  border: 1px solid rgb(39, 31, 31);
+  left: 10%; // Adjust left to center the tab
+  border: 2px solid rgb(39, 31, 31);
   transform: translateX(-50%); // Center horizontally
   border-radius: 50%;
 }
