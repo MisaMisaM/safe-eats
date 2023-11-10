@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["details", "text"]
   connect() {
-    console.log("connected")
+    console.log("Entry thinner is connected")
   }
   dropdown() {
     this.detailsTarget.classList.toggle("d-none")
