@@ -1,17 +1,17 @@
 <div class="row justify-content-center">
   <div class="my-3 ml-3">
-    <%= form_with url: additives_path, method: :get, class: "d-flex justify-content-center" do %>
-      <div class="d-flex align-items-center">
-        <div class="col-10">
-          <%= text_field_tag :query, params[:query],
-            class: "form-control searchbar",
-            placeholder: 'キーワードを入力'
-          %>
-        </div>
-        <div class="ml-2">
-          <%= submit_tag "検索", name: "", class: "btn btn-primary" %>
-        </div>
-      </div>
-    <% end %>
+    <div data-controller="refresh-list">
+      <%= form_with url: additives_path, method: :get, html: { class: 'mb-5', data: { refresh_list_target: 'form' } } do |f| %>
+        <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: 'キーワードを入力' ,
+                     value: params[:query],
+                     data: {
+                      refresh_list_target: 'searchInput',
+                      action: "keyup->refresh-list#update"
+                    } %>
+      <% end %>
+      <%= render 'result', additives: @additives %>
+    </div>
   </div>
 </div>
