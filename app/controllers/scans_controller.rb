@@ -48,6 +48,7 @@ class ScansController < ApplicationController
       # @additives = Additive.all
       # @additive_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
       @matching_additives = Additive.select { |additive| @extracted_text.include?(additive.name) || (@extracted_text.include?(additive.display_name) unless additive.display_name.nil?)}
+      # @matching_additives = Additive.select { |additive| @extracted_text.include?(additive.display_name || additive.name)}
 
       # @additive_words.each do |word|
       #   @matching_additives.concat(@additives.select { |additive| word.include?(additive.name || additive.display_name) })
