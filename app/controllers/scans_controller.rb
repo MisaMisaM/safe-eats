@@ -45,12 +45,12 @@ class ScansController < ApplicationController
       end
 
       @additives = Additive.all
-      @additive_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
-      @matching_additives = []
+      # @additive_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
+      @matching_additives = @additives.select { |additive| text.include?(additive.name) || (text.include?(additive.display_name) if !additive.display_name.nil?)}
 
-      @additive_words.each do |word|
-        @matching_additives.concat(@additives.select { |additive| word.include?(additive.name || additive.display_name) })
-      end
+      # @additive_words.each do |word|
+      #   @matching_additives.concat(@additives.select { |additive| word.include?(additive.name || additive.display_name) })
+      # end
 
       @allergens = Allergen.all
       @allergen_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
