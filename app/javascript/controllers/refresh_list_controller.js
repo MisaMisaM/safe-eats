@@ -11,7 +11,17 @@ export default class extends Controller {
     console.log(this.searchInputTarget);
     console.log("Refresh List is connected")
 
+    // The following disables the "enter" key in order prevent users from reloading the page.
+    this.searchInputTarget.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        this.submitForm();
+      }
+    });
   }
+
+
+
   update() {
     const url = `${this.formTarget.action}?query=${this.searchInputTarget.value}`
     fetch(url, {
