@@ -11,7 +11,7 @@
         <p>--------------------------------------------</p>
         <p>含まれる添加物:
           <% @matching_additives.each do |additive| %>
-            <%= additive.name || additive.display_name %>
+            <%= additive.display_name || additive.name %>
           <% end %>
         </p>
         <p>アレルギー:
