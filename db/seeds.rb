@@ -30,6 +30,7 @@ CSV.foreach(csv_file, headers: true) do |row|
     purpose: row['purpose'],
     information: row['information'],
     danger_level: row['danger_level'],
+    display_name: row['display_name'],
     url: row['url']
   )
 end

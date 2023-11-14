@@ -34,6 +34,7 @@ class ScansController < ApplicationController
     @image_url = "https://res.cloudinary.com/dvqsmda6p/image/upload/v1698067820/development/#{@scan.image_url.key}"
 
     if @image_url.present?
+      # consider running text extraction and saving the extracted text in database item, so you don't have to call the API everytime the page is refreshed
       google_vision_service = GoogleVisionService.new(@image_url)
       @extracted_text = google_vision_service.extract_text
 
@@ -44,13 +45,14 @@ class ScansController < ApplicationController
         format.html
       end
 
-      @additives = Additive.all
-      @additive_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
-      @matching_additives = []
+      # @additives = Additive.all
+      # @additive_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
+      @matching_additives = Additive.select { |additive| @extracted_text.include?(additive.name) || (@extracted_text.include?(additive.display_name) unless additive.display_name.nil?)}
+      # @matching_additives = Additive.select { |additive| @extracted_text.include?(additive.display_name || additive.name)}
 
-      @additive_words.each do |word|
-        @matching_additives.concat(@additives.select { |additive| word.include?(additive.name || additive.display_name) })
-      end
+      # @additive_words.each do |word|
+      #   @matching_additives.concat(@additives.select { |additive| word.include?(additive.name || additive.display_name) })
+      # end
 
       @allergens = Allergen.all
       @allergen_words = @extracted_text.gsub("\n", "").split(/\s+|、/)
