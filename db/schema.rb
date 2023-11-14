@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_061108) do
     t.string "purpose"
     t.string "url"
     t.string "display_name"
-    t.string "searchable_name"
+    t.text "searchable_names", default: [], array: true
   end
 
   create_table "allergens", force: :cascade do |t|

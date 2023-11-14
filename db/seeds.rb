@@ -24,7 +24,7 @@ require 'csv'
 csv_file = Rails.root.join('db', 'seed', 'additives.csv')
 
 CSV.foreach(csv_file, headers: true) do |row|
-  additive = Additive.create!(
+  additive = Additive.new(
     name: row['name'],
     category: row['category'],
     purpose: row['purpose'],
@@ -34,10 +34,8 @@ CSV.foreach(csv_file, headers: true) do |row|
     url: row['url']
   )
 
-  names_array = [additive.name]
-  names_array.concat(additive.display_name.split(/[,\s]+/)) if additive.display_name.present?
-
-  additive.searchable_name = names_array.compact.uniq.join(',')
+  additive.searchable_names = [additive.name]
+  additive.searchable_names.concat(additive.display_name.split(/[\p{Z},、]+/).reject(&:empty?)) if additive.display_name.present?
 
   additive.save!
 end
