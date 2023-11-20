@@ -1,0 +1,104 @@
+.wrapper>h1 {
+  padding-top: 32px;
+}
+
+.welcome > h1 {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.wrapper > img {
+border-radius: 9px;
+}
+
+.main {
+  background: rgb(212, 235, 212);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-box1,
+.landing-box2,
+.landing-box3 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #000000;
+  background: #c6e4ff;
+  border-bottom: solid 6px #aac5de;
+  border-radius: 9px;
+  width: 240px;
+  height: 240px;
+  align-items: bottom;
+  justify-content: center;
+  text-align: center;
+}
+
+
+// 実験
+// .landing-box1,
+// .landing-box2,
+// .landing-box3 {
+//   position: relative;
+//   margin: 2em 0;
+//   padding: 0.5em 1em;
+//   border: solid 3px #95ccff;
+//   border-radius: 8px;
+// }
+// .box26 .box-title {
+//   position: absolute;
+//   display: inline-block;
+//   top: -13px;
+//   left: 10px;
+//   padding: 0 9px;
+//   line-height: 1;
+//   font-size: 19px;
+//   background: #FFF;
+//   color: #95ccff;
+//   font-weight: bold;
+// }
+// .box26 p {
+//   margin: 0;
+//   padding: 0;
+// }
+
+
+// boxのアニメーションの設定
+.fadeUp {
+  animation-name: fadeUpAnime;
+  /*アニメーションの定義名*/
+  animation-duration: 1s;
+  /*アニメーション変化時間 ※デフォルト*/
+  animation-fill-mode: forwards;
+  /*アニメーションの開始と終了時の状態を指定*/
+  opacity: 0;
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// boxのアニメーションの設定
+.landing-container p {
+  margin: 0;
+  padding: 0;
+}
+
+.landing-box1 {
+  animation-duration: 1s;
+}
+
+.landing-box2 {
+  animation-duration: 2s;
+}
+
+.landing-box3 {
+  animation-duration: 3s;
+}

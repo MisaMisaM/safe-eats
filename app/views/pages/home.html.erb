@@ -1,3 +1,37 @@
-<h1>Pages#home</h1>
+<%# <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 <%= link_to "Index", scans_path %>
+
+<%# ここから下はlanding page %>
+<div class="main">
+
+<div class="welcome">
+  <h1>Welcome to Safe eats App</h1>
+</div><br>
+
+
+  <div class="land-title">
+    <h1 >食品の添加物が気になったら、スキャンして分析しよう</h1>
+  </div>
+
+
+  <div class="wrapper">
+    <div class="landing-box1 fadeUp">
+      <p>Step1</p>
+      <img src="<%= asset_path('9.png') %>" alt="scan" width="160", height="160" >
+    </div>
+    <div class="landing-box2 fadeUp">
+      <p>Step2</p>
+      <img src="<%= asset_path('10.png') %>" alt="addtives" width="160", height="160" >
+    </div>
+    <div class="landing-box3 fadeUp">
+      <p>Step3</p>
+      <img src="<%= asset_path('11.png') %>" alt="stay helthy" width="160", height="160" >
+    </div>
+  </div>
+
+
+
+  </div>
+
+<%= link_to 'Start', additives_path, class: 'start-button' %>
