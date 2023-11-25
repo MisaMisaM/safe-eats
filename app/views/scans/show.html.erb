@@ -15,10 +15,12 @@
           <% end %>
         </p>
         <p>アレルギー:
-          <% @matching_allergens.map { |allergen| allergen.icon }.uniq.each do |icon| %>
-            <%= image_tag icon, class: "icon-smaller" %>
-          </p>
-        <% end %>
+          <div class="icon-inline">
+            <% @matching_allergens.map { |allergen| allergen.icon }.uniq.each do |icon| %>
+              <%= image_tag icon, class: "icon-smaller" %>
+            </p>
+          <% end %>
+        </div>
       <% else %>
         <p>No text found in the image.</p>
       <% end %>

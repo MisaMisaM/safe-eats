@@ -1,4 +1,10 @@
 .icon-smaller {
-  max-width: 30%;
-  max-height: 30%;
+  max-width: 15%;
+  max-height: 15%;
+}
+
+.icon-inline {
+  display: flex;
+  gap: 2px;
+  margin: 0 4px;
 }
