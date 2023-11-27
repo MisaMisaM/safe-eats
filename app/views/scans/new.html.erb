@@ -13,9 +13,10 @@
       <p>Loading...</p>
     </div>
     <%= simple_form_for @scan, url: '/scans', html: { multipart: true, id: 'capture-form' } do |f| %>
-      <%= f.input :image_url, as: :file %>
+      <%= f.input :image_url, as: :file, input_html: { id: 'file-input' } %>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <button id="capture-button" class="btn btn-primary">Capture and Upload</button>
+      <button id="upload-button" class="btn btn-primary">Upload File</button>
     <% end %>
     <script>
       // Function to access the camera and display the video feed
@@ -37,6 +38,17 @@
       document.getElementById('capture-button').addEventListener('click', function () {
         // Show the loading screen
         document.getElementById('loadingScreen').classList.remove('hidden');
+      });
+
+      // Button click event handler to upload the file
+      document.getElementById('upload-button').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Show the loading screen
+        document.getElementById('loadingScreen').classList.remove('hidden');
+
+        // Submit the form
+        document.getElementById('capture-form').submit();
       });
 
       // Button click event handler to capture and upload the image
