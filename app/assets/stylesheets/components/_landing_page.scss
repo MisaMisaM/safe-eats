@@ -1,3 +1,58 @@
+img {
+  padding: 48px;
+}
+.title1,
+.title2,
+.title3 {
+padding: 16px;
+text-align: center;
+}
+
+h1 {
+  padding-top: 24px;
+  margin-bottom: 24px;
+  font-size: 28px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+p {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.carousel-indicators {
+  height: 20px;
+}
+
+/* カルーセルの矢印ボタンのスタイル変更 */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 40px; /* ボタンの幅を調整 */
+  color: #3308ce; /* ボタンの色を変更 */
+  border-radius: 50%; /* ボタンを円形にする */
+}
+
+/* 矢印アイコンの色変更 */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #5BB998; /* 矢印の色を変更 */
+  position: relative;
+}
+
+/* アクティブなボタンのスタイル変更 */
+.carousel-control-prev:hover,
+.carousel-control-next:hover,
+.carousel-control-prev:focus,
+.carousel-control-next:focus {
+  color: #2b17de; /* ホバー時やフォーカス時のボタンの色変更 */
+}
+
+.body {
+  background-color: #e8faf2;
+
+}
+
 .wrapper>h1 {
   padding-top: 32px;
 }

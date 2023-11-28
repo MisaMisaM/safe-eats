@@ -73,12 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_061108) do
     t.index ["allergen_id"], name: "index_ingredients_on_allergen_id"
   end
 
-  create_table "results", force: :cascade do |t|
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "scans", force: :cascade do |t|
     t.string "image_url"
     t.text "text"
