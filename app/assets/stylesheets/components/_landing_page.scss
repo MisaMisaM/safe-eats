@@ -11,21 +11,17 @@
   text-align: center;
 }
 
-.title1,
-.title2,
-.title3 {
-  h1 {
-    padding-top: 24px;
-    margin-bottom: 24px;
-    font-size: 28px;
-    font-weight: bold;
-    white-space: nowrap;
-  }
+h1 {
+  padding-top: 24px;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: bold;
+}
 
-  p {
-    margin-top: 16px;
-    font-size: 14px;
-  }
+p {
+  margin-top: 16px;
+  font-size: 8px;
+  max-width: 26em;
 }
 
 .carousel-indicators {
@@ -168,4 +164,20 @@
 
 .landing-box3 {
   animation-duration: 3s;
+}
+
+
+/* スマートフォン用 */
+@media only screen and (max-width: 767px) {
+  /* ここにスマートフォン向けのスタイルを追加 */
+}
+
+/* タブレット用 */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* ここにタブレット向けのスタイルを追加 */
+}
+
+/* デスクトップ用 */
+@media only screen and (min-width: 1025px) {
+  /* ここにデスクトップ向けのスタイルを追加 */
 }
