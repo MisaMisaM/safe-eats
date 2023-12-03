@@ -1,11 +1,14 @@
-img {
-  padding: 48px;
+.carousel-item {
+  img {
+    padding: 48px;
+  }
 }
+
 .title1,
 .title2,
 .title3 {
-padding: 16px;
-text-align: center;
+  padding: 16px;
+  text-align: center;
 }
 
 h1 {
@@ -28,15 +31,19 @@ p {
 /* カルーセルの矢印ボタンのスタイル変更 */
 .carousel-control-prev,
 .carousel-control-next {
-  width: 40px; /* ボタンの幅を調整 */
-  color: #3308ce; /* ボタンの色を変更 */
-  border-radius: 50%; /* ボタンを円形にする */
+  width: 40px;
+  /* ボタンの幅を調整 */
+  color: #3308ce;
+  /* ボタンの色を変更 */
+  border-radius: 50%;
+  /* ボタンを円形にする */
 }
 
 /* 矢印アイコンの色変更 */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #5BB998; /* 矢印の色を変更 */
+  background-color: #5BB998;
+  /* 矢印の色を変更 */
   position: relative;
 }
 
@@ -45,7 +52,8 @@ p {
 .carousel-control-next:hover,
 .carousel-control-prev:focus,
 .carousel-control-next:focus {
-  color: #2b17de; /* ホバー時やフォーカス時のボタンの色変更 */
+  color: #2b17de;
+  /* ホバー時やフォーカス時のボタンの色変更 */
 }
 
 .body {
@@ -57,12 +65,12 @@ p {
   padding-top: 32px;
 }
 
-.welcome > h1 {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.welcome>h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.wrapper > img {
-border-radius: 9px;
+.wrapper>img {
+  border-radius: 9px;
 }
 
 .main {
