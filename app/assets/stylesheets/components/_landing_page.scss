@@ -11,14 +11,14 @@ text-align: center;
 h1 {
   padding-top: 24px;
   margin-bottom: 24px;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
-  white-space: nowrap;
 }
 
 p {
   margin-top: 16px;
-  font-size: 14px;
+  font-size: 8px;
+  max-width: 26em;
 }
 
 .carousel-indicators {
@@ -156,4 +156,20 @@ border-radius: 9px;
 
 .landing-box3 {
   animation-duration: 3s;
+}
+
+
+/* スマートフォン用 */
+@media only screen and (max-width: 767px) {
+  /* ここにスマートフォン向けのスタイルを追加 */
+}
+
+/* タブレット用 */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* ここにタブレット向けのスタイルを追加 */
+}
+
+/* デスクトップ用 */
+@media only screen and (min-width: 1025px) {
+  /* ここにデスクトップ向けのスタイルを追加 */
 }
