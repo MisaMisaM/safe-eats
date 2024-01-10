@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "stimulus": "^3.2.2"
+  },
+  "devDependencies": {
+    "prettier": "3.1.1"
   }
 }

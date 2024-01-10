@@ -23,9 +23,9 @@ class ScansController < ApplicationController
 
   def destroy
     @scan = Scan.find(params[:id])
-     if @scan.created_at <= 1.hour.ago
+    if @scan.created_at <= 1.hour.ago
       Cloudinary::Uploader.destroy(@scan.image_public_id)
-     end
+    end
   end
 
 
