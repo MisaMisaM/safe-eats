@@ -2,3 +2,25 @@
   justify-content: space-between;
   /* Space evenly between child elements */
 }
+
+.button {
+  margin-top: 20px;
+  display       : inline-block;
+  border-radius : 5%;
+  font-size     : 13pt;
+  text-align    : center;
+  cursor       : pointer;
+  padding       : 12px 12px;
+  background    : #37a33b;
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  border        : 2px solid #37a33b;
+  text-decoration: none;
+  width: 45%;
+}
+.button:hover {
+  box-shadow    : none;
+  color         : #37a33b;
+  background    : #ffffff;
+}
