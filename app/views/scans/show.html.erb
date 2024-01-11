@@ -10,7 +10,7 @@
         <%= @extracted_text %>
         <p>--------------------------------------------</p>
         <div data-refresh-list-target="result">
-          <p>含まれる添加物:
+          <p>＜含まれる添加物＞
             <% @matching_additives.each do |additive| %>
               <div class="card card-trip mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown">
                 <div class="p-3">
@@ -37,7 +37,8 @@
             </div>
           <% end %>
         </p>
-        <p>アレルギー:
+        <p>＜アレルギー＞
+          <p>※読み取った写真から抽出していますが、実際と異なる場合がありますのでご注意ください</p>
           <div class="icon-inline">
             <% @matching_allergens.map { |allergen| allergen.icon }.uniq.each do |icon| %>
               <%= image_tag icon, class: "icon-smaller" %>
