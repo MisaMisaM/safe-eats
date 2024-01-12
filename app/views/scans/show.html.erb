@@ -6,10 +6,12 @@
   <body>
     <div class="container me-2 my-4">
       <h3><i class="fa-solid fa-magnifying-glass"></i> 読み取り結果 </h3>
-      <% if @extracted_text.present? %>
-        <span>--------------------------------------------</span><br>
-        <%= @extracted_text %>
-        <p>--------------------------------------------</p>
+      <div class="mx-2">
+        <% if @extracted_text.present? %>
+          <span>--------------------------------------------</span><br>
+          <%= @extracted_text %>
+          <p>--------------------------------------------</p>
+        </div>
         <div data-refresh-list-target="result">
           <h3>＜含まれる添加物＞
             <% @matching_additives.each do |additive| %>
@@ -38,8 +40,7 @@
             <% end %>
           </h3>
           <h3>＜アレルギー＞</h3>
-          <p>※読み取った写真から抽出していますが、実際と異なる場合がありますのでご注意ください</p>
-          <div class="icon-inline">
+          <div class="icon-inline mx-3 mt-3 mb-2">
             <% @matching_allergens.map { |allergen| allergen.icon }.uniq.each do |icon| %>
               <%= image_tag icon, class: "icon-smaller" %>
             <% end %>
@@ -47,6 +48,7 @@
             <p>No text found in the image.</p>
           <% end %>
         </div>
+        <p class="mx-3 fst-italic">※読み取った写真から抽出していますが、実際と異なる場合がありますのでご注意ください</p>
         <a href="/scans/new" class="button">もう一度撮影する</a>
       </div>
     </body>
