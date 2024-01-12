@@ -5,19 +5,21 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Take a Picture</h1>
-    <video id="camera-feed" autoplay></video>
-    <!-- Loading screen -->
-    <div class="loading-screen hidden" id="loadingScreen">
-      <div class="spinner"></div>
-      <p>Loading...</p>
+    <div class="container me-3 my-3">
+      <h1>ラベルを読み取る</h1>
+      <video id="camera-feed" autoplay></video>
+      <!-- Loading screen -->
+      <div class="loading-screen hidden" id="loadingScreen">
+        <div class="spinner"></div>
+        <p>読み込み中...</p>
+      </div>
+      <%= simple_form_for @scan, url: '/scans', html: { multipart: true, id: 'capture-form' } do |f| %>
+        <%= f.input :image_url, as: :file, input_html: { id: 'file-input' } %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <button id="capture-button" class="btn btn-primary">撮影してアップロード</button>
+        <button id="upload-button" class="btn btn-primary">ファイルをアップロード</button>
+      <% end %>
     </div>
-    <%= simple_form_for @scan, url: '/scans', html: { multipart: true, id: 'capture-form' } do |f| %>
-      <%= f.input :image_url, as: :file, input_html: { id: 'file-input' } %>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <button id="capture-button" class="btn btn-primary">Capture and Upload</button>
-      <button id="upload-button" class="btn btn-primary">Upload File</button>
-    <% end %>
     <script>
       // Function to access the camera and display the video feed
       function setupCamera() {
