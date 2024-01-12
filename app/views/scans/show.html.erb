@@ -4,8 +4,8 @@
     <title>Extracted Text</title>
   </head>
   <body>
-    <h2>Extracted Text</h2>
-    <div id="extracted-text-container">
+    <div class="container mx-2 my-2">
+      <h2>Extracted Text</h2>
       <% if @extracted_text.present? %>
         <%= @extracted_text %>
         <p>--------------------------------------------</p>
@@ -34,21 +34,19 @@
                   </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </p>
-        <p>＜アレルギー＞
+            <% end %>
+          </p>
+          <p>＜アレルギー＞</p>
           <p>※読み取った写真から抽出していますが、実際と異なる場合がありますのでご注意ください</p>
           <div class="icon-inline">
             <% @matching_allergens.map { |allergen| allergen.icon }.uniq.each do |icon| %>
               <%= image_tag icon, class: "icon-smaller" %>
-            </p>
+            <% end %>
+          <% else %>
+            <p>No text found in the image.</p>
           <% end %>
         </div>
-      <% else %>
-        <p>No text found in the image.</p>
-      <% end %>
-    </div>
-    <a href="/scans/new" class="button">もう一度撮影する</a>
-  </body>
-</html>
+        <a href="/scans/new" class="button">もう一度撮影する</a>
+      </div>
+    </body>
+  </html>
