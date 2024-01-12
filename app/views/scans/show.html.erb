@@ -4,39 +4,40 @@
     <title>Extracted Text</title>
   </head>
   <body>
-    <div class="container mx-2 my-2">
-      <h2>Extracted Text</h2>
+    <div class="container me-2 my-4">
+      <h3><i class="fa-solid fa-magnifying-glass"></i> 読み取り結果 </h3>
       <% if @extracted_text.present? %>
+        <span>--------------------------------------------</span><br>
         <%= @extracted_text %>
         <p>--------------------------------------------</p>
         <div data-refresh-list-target="result">
-          <p>＜含まれる添加物＞
+          <h3>＜含まれる添加物＞
             <% @matching_additives.each do |additive| %>
-              <div class="card card-trip mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown">
+              <div class="card card-trip mb-3 od py-1 px-1" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown">
                 <div class="p-3">
                   <div class="overflow-container" data-enty-thinner-target="text">
                     <p class="pt-2 mb-0 fs-5">
                       <i class="fa-solid fa-caret-down"></i>
-                      Name: <%= additive.display_name || additive.name %> </p>
+                      添加物名: <%= additive.display_name || additive.name %> </p>
                   </div>
                 </div>
                 <div class="justify-content-center p-3 d-none" data-enty-thinner-target="details">
                   <div class="justify-content-center p-3">
                     <% if additive.information.present? %>
-                      <p class="pt-2 mb-2 fs-5"> Information: <%= additive.information %></p>
+                      <p class="pt-2 mb-2 fs-5"> 詳細: <%= additive.information %></p>
                     <% end %>
                     <% if additive.purpose.present? %>
-                      <p class="pt-2 mb-0 fs-5">Purpose: <%= additive.purpose %></p>
+                      <p class="pt-2 mb-0 fs-5">用途: <%= additive.purpose %></p>
                     <% end %>
                     <% if additive.url.present? %>
-                      Reference URL: <a href="<%= additive.url %>" target="_blank"><%= additive.url %></a>
+                      参考サイト: <a href="<%= additive.url %>" target="_blank"><%= additive.url %></a>
                     <% end %>
                   </div>
                 </div>
               </div>
             <% end %>
-          </p>
-          <p>＜アレルギー＞</p>
+          </h3>
+          <h3>＜アレルギー＞</h3>
           <p>※読み取った写真から抽出していますが、実際と異なる場合がありますのでご注意ください</p>
           <div class="icon-inline">
             <% @matching_allergens.map { |allergen| allergen.icon }.uniq.each do |icon| %>
