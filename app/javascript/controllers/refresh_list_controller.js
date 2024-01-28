@@ -26,21 +26,10 @@ export default class extends Controller {
     this.resultTarget.style.display = "none";
   }
 
-
-
-
   update() {
     const url = `${this.formTarget.action}?query=${this.searchInputTarget.value}`
     const searchInputValue = this.searchInputTarget.value.trim();
     const emptySearchImage = this.element.querySelector("#emptySearchImage");
-
-    if (searchInputValue === "") {
-      emptySearchImage.style.display = "block";
-      this.resultTarget.style.display = "none";
-    } else {
-      this.resultTarget.style.display = "block";
-      emptySearchImage.style.display = "none";
-    }
 
     fetch(url, {
       headers: {
@@ -50,7 +39,19 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         this.resultTarget.outerHTML = data;
-      })
+
+        //Checks after getting data to see there are no search results
+        //Checks if class "search_results" is used to create results list"
+        const hasResults = this.resultTarget.querySelectorAll(".search_results").length > 0;
+        const isSearchNotEmpty = searchInputValue !== "";
+        if (searchInputValue === "" || (isSearchNotEmpty && !hasResults)) {
+          emptySearchImage.style.display = "block";
+          this.resultTarget.style.display = "none";
+        } else {
+          this.resultTarget.style.display = "block";
+          emptySearchImage.style.display = "none";
+        }
+      });
   }
 }
 

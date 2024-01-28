@@ -6,7 +6,7 @@
   <% if params[:query].present? %>
     <% (@additives + @allergens).each do |item| %>
       <% if item.name.downcase.include?(params[:query].downcase) %>
-        <div class="card card-trip mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown">
+        <div class="card card-trip search_results mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown">
           <div class="p-3">
             <div class="overflow-container" data-enty-thinner-target="text">
               <%# Arrow symbol is here %>
