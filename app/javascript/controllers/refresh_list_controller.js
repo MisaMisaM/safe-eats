@@ -23,7 +23,6 @@ export default class extends Controller {
     // To show the image initially
     const emptySearchImage = this.element.querySelector("#emptySearchImage");
     emptySearchImage.style.display = "block";
-    this.resultTarget.style.display = "none";
   }
 
   update() {
@@ -40,15 +39,12 @@ export default class extends Controller {
       .then((data) => {
         this.resultTarget.outerHTML = data;
 
-        //Checks after getting data to see there are no search results
+        //Checks after getting data to see if there are no search results
         //Checks if class "search_results" is used to create results list"
-        const hasResults = this.resultTarget.querySelectorAll(".search_results").length > 0;
-        const isSearchNotEmpty = searchInputValue !== "";
-        if (searchInputValue === "" || (isSearchNotEmpty && !hasResults)) {
+        const noResults = this.resultTarget.querySelectorAll(".search_results").length < 1;
+        if (searchInputValue === "" || (searchInputValue !== "" && noResults)) {
           emptySearchImage.style.display = "block";
-          this.resultTarget.style.display = "none";
         } else {
-          this.resultTarget.style.display = "block";
           emptySearchImage.style.display = "none";
         }
       });
