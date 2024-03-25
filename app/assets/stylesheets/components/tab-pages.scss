@@ -1,0 +1,25 @@
+.left-tab-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.explanation-pic,
+.explanation-bullet {
+  align-self: center;
+}
+
+.explanation-bullet {
+  @media only screen and (max-width: 767px) {
+    align-self: start;
+    padding: 0 8px;
+  }
+}
+
+.explanation-pic {
+  margin-bottom: 16px;
+
+  @media only screen and (max-width: 767px) {
+    width: 380px;
+  }
+}

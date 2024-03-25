@@ -50,6 +50,7 @@ body {
 .tab-content>.tab-pane {
   // To fix bottom of content from being covered by navbar
   padding-bottom: 80px;
+  overflow: hidden;
 }
 
 
@@ -70,9 +71,9 @@ body {
 // Adjust the top and left properties to control the positioning of the tab
 .yellow-circular-tab.upper-half {
   top: -40px; // Move the tab up to position the upper half above content
-  left: 10%; // Adjust left to center the tab
+  // left: 10%;
   border: 2px solid rgb(39, 31, 31);
-  transform: translateX(-50%); // Center horizontally
+  // transform: translateX(-50%);
   border-radius: 50%;
 }
 
