@@ -2,7 +2,7 @@
   <%# Replace URL for Image here ↓ %>
   <%= image_tag("https://thumb.ac-illust.com/ea/eafefd752b3f2c3ae98c0884787043ad_w.jpeg", alt: "Search Clipart", class: "girl") %>
 </div>
-<div data-refresh-list-target="result">
+<div class="results-list" data-refresh-list-target="result">
   <% if params[:query].present? %>
     <% (@additives + @allergens).each do |item| %>
       <% if item.name.downcase.include?(params[:query].downcase) %>

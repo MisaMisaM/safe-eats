@@ -1,6 +1,11 @@
 .carousel-item {
   img {
-    padding: 48px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media only screen and (max-width: 767px) {
+      padding: 48px;
+    }
   }
 }
 
@@ -9,6 +14,10 @@
 .title3 {
   padding: 16px;
   text-align: center;
+
+  @media only screen and (max-width: 767px) {
+    // height: initial;
+  }
 
 }
 
@@ -27,12 +36,22 @@
 
   p {
     margin-top: 16px;
-    font-size: 8px;
+    font-size: 12px;
     max-width: 26em;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
   }
+}
+
+.carousel-image {
+  width: initial;
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+  }
+
+
 }
 
 .carousel-indicators {
